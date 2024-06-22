@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Environment = System.Environment;
@@ -12,8 +13,23 @@ public class SaveData : MonoBehaviour
 {
     string savedGamesPath;
 
+    public Save save;
+
+    string SaveName = "SaveData.game";
+   
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
+
 #if UNITY_STANDALONE_WIN
         savedGamesPath =
            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).Replace("\\", "/");
@@ -25,11 +41,12 @@ public class SaveData : MonoBehaviour
 #else
         savedGamesPath = Application.persistentDataPath + "/";
 #endif        
+        Loading();
     }
 
-    public Save save;
 
-    string SaveName = "SaveData.game";
+    public static SaveData Instance { get; private set; }
+
 
     public void Saving()
     {
@@ -61,7 +78,7 @@ public class SaveData : MonoBehaviour
     {
         string destination = Path.Combine(Application.persistentDataPath, SaveName);
         Save saveData = new();
-        if(File.Exists(destination)) 
+        if (File.Exists(destination))
         {
             try
             {
@@ -76,11 +93,27 @@ public class SaveData : MonoBehaviour
 
                 save = JsonUtility.FromJson<Save>(dataToLoad);
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 Debug.LogError("error" + destination + "\n" + e);
             }
         }
+        else
+        {
+            save = saveData;
+        }
+    }
+
+    public int GetMoney()
+    {
+        return SaveData.Instance.save.economy.Money;
+    }
+
+    public int SetMoney(int change)
+    {
+        SaveData.Instance.save.economy.Money += change;
+        Saving();
+        return SaveData.Instance.save.economy.Money;
     }
 }
 
@@ -96,8 +129,9 @@ public class Save
 [Serializable]
 public class Inventory 
 {
-    public Recipe recipe;
-    public DollHave dollHave;
+    public List<RecipeHave> recipe;
+    public List<DollHave> dollHave;
+    public List<IngredientsHave> ingredientsHave;
 }
 
 [Serializable]
@@ -112,6 +146,20 @@ public class DollHave
     public string dollName;
     public int AmountHold;
 }
+
+[Serializable]
+public class IngredientsHave
+{
+    public string IngredientName;
+    public int AmountHold;
+}
+
+[Serializable]
+public class RecipeHave
+{
+    public string IngredientId;
+}
+
 
 [Serializable]
 public class TimeSave

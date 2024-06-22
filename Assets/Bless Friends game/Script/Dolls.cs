@@ -35,6 +35,11 @@ public class Dolls : ScriptableObject
         return i;
     }
 
+    public Doll GetDoll(string dollName)
+    {
+        return doll.Find(x => x.DollName == dollName);
+    }
+
 }
 
 
