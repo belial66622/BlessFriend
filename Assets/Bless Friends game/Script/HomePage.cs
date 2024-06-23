@@ -13,11 +13,16 @@ public class HomePage : MonoBehaviour
     Dolls dolllist;
 
     [SerializeField]
-    private Image[] item;
+    private GameObject SlideItem;
+
+    private Transform currentpage;
+
+    [SerializeField]
+    private Transform parentslide;
 
     int pageNumber = 9;
 
-    int currentPage = 0;
+    int currentItem = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +37,28 @@ public class HomePage : MonoBehaviour
             }
             ); 
         }
-        UpdateItem(0);
+        UpdateItem();
     }
 
-    public void UpdateItem(int page)
+    public void UpdateItem()
+    {
+        currentpage = Instantiate(SlideItem, parentslide).transform;
+
+        for (int i = 0; i < dollAcquired.Count; i++)
+        {
+            currentpage.GetChild(currentItem).GetComponent<Image>().sprite = dollAcquired[i].dolls.DollImage;
+
+            currentItem++;
+            if (currentItem >= pageNumber)
+            {
+                currentItem = 0;
+                currentpage = Instantiate(SlideItem, parentslide).transform;
+            }
+        }
+    }
+
+
+    /*public void UpdateItem(int page)
     {
         int itemindex = 0;
         var temp = currentPage + page;
@@ -86,7 +109,7 @@ public class HomePage : MonoBehaviour
         {
             return;
         }
-    }
+    }*/
 }
 
 

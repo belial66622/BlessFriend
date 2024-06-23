@@ -35,6 +35,10 @@ public class IngredientsList : ScriptableObject
         return i;
     }
 
+    public Sprite GetImage(string name)
+    {
+        return ingredients.Find(x => x.name == name).image;
+    }
 
     [System.Serializable]
     public class Ingredients

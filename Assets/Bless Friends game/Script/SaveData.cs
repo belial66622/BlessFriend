@@ -115,6 +115,102 @@ public class SaveData : MonoBehaviour
         Saving();
         return SaveData.Instance.save.economy.Money;
     }
+
+
+    public IngredientsHave GetIngredients(string name)
+    {
+        foreach (var item in SaveData.Instance.save.inventory.ingredientsHave)
+        {
+            if (item.IngredientName == name)
+            {
+                return item;
+            }
+        }
+
+        return new IngredientsHave();
+    }
+    public void SetIngredients(string name, int amount)
+    {
+        foreach (var item in SaveData.Instance.save.inventory.ingredientsHave)
+        {
+            if (item.IngredientName == name)
+            {
+                item.AmountHold += amount;
+                Saving();
+                return;
+            }
+        }
+
+        SaveData.Instance.save.inventory.ingredientsHave.Add(new IngredientsHave {
+        IngredientName= name,
+        AmountHold = amount
+        });
+        Saving();
+    }
+
+    public DollHave GetDolls(string name)
+    {
+        foreach (var item in SaveData.Instance.save.inventory.dollHave)
+        {
+            if (item.dollName == name)
+            {
+                return item;
+            }
+        }
+
+        return new DollHave();
+    }
+
+    public void SetDolls(string name , int amount = 1)
+    {
+        foreach (var item in SaveData.Instance.save.inventory.dollHave)
+        {
+            if (item.dollName == name)
+            {
+                item.AmountHold += amount;
+                Saving();
+                return;
+            }
+        }
+
+        SaveData.Instance.save.inventory.dollHave.Add(new DollHave
+        {
+            dollName = name,
+            AmountHold = amount
+        });
+        Saving();
+    }
+
+    public RecipeHave GetRecipes(string name)
+    {
+        foreach (var item in SaveData.Instance.save.inventory.recipe)
+        {
+            if (item.RecipeId == name)
+            {
+                return item;
+            }
+        }
+
+        return new RecipeHave();
+    }
+
+    public void setRecipe(string name)
+    {
+        foreach (var item in SaveData.Instance.save.inventory.recipe)
+        {
+            if (item.RecipeId == name)
+            {
+                return;
+            }
+        }
+
+        SaveData.Instance.save.inventory.recipe.Add(new RecipeHave
+        {
+            RecipeId = name,
+        });
+        Saving();
+    }
+
 }
 
 [Serializable]
@@ -157,7 +253,7 @@ public class IngredientsHave
 [Serializable]
 public class RecipeHave
 {
-    public string IngredientId;
+    public string RecipeId;
 }
 
 
