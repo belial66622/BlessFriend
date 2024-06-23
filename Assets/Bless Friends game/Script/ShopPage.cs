@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
 {
-
     [SerializeField]
     TextMeshProUGUI moneyText;
 
@@ -40,12 +39,14 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
 
     int pageMaxNumber= 0;
 
-    private void Start()
+    Vector3 slideposition;
+
+    public void Initialize()
     {
         UpdateItem();
-        originPos= parentslide.transform.localPosition;
+        originPos = parentslide.transform.localPosition;
 
-        SaveData.Instance.updateEvent += UpdateItem;
+        slideposition = parentslide.transform.position;
     }
 
     public void TakeIgredients(string name)
@@ -103,7 +104,7 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
             //check number of child
             currentpage = parentslide.GetChild(pageMaxNumber);
 
-            for (int i = 0; i < SaveData.Instance.save.inventory.ingredientsHave.Count; i++)
+            for (int i = 0; i < AssetManager.Instance.ingredientsList.ingredients.Count; i++)
             {
                 var child = currentpage.GetChild(currentItem).GetComponent<Image>();
 
@@ -116,6 +117,7 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
                 child.gameObject.SetActive(true);
 
                 if (i + 1 >= AssetManager.Instance.ingredientsList.ingredients.Count) break;
+                
                 currentItem++;
                 if (currentItem >= pageNumber)
                 {
@@ -135,12 +137,14 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
             }
 
         }
+        Debug.Log(pageMaxNumber);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        var dif = (eventData.pressPosition.x - eventData.position.x) / (10);
-        parentslide.transform.position -= new Vector3( dif, 0, 0 );
+        var dif = (eventData.pressPosition.x - eventData.position.x);
+    
+        parentslide.transform.position = slideposition - new Vector3( dif, 0, 0 );
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -156,5 +160,7 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
         {
             parentslide.localPosition = originPos;
         }
+
+        slideposition = parentslide.transform.position;
     }
 }

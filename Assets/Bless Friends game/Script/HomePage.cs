@@ -28,15 +28,18 @@ public class HomePage : MonoBehaviour
 
     int pageMaxNumber = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SaveData.Instance.updateEvent += UpdateItem;
+    List<Transform> itemDolls = new();
 
+    Vector3 slideposition;
+
+    // Start is called before the first frame update
+
+    public void Initialize()
+    {
         originPos = parentslide.transform.localPosition;
+        slideposition= parentslide.transform.position;
         UpdateItem();
     }
-
     public void GetDoll()
     {
         dollAcquired.Clear();
@@ -54,18 +57,22 @@ public class HomePage : MonoBehaviour
 
     public void UpdateItem()
     {
+        disableall();
         GetDoll();
 
+        if (dollAcquired.Count == 0) return;
         pageMaxNumber = 0;
 
         currentItem = 0;
         if (parentslide.childCount == 0)
         {
             currentpage = Instantiate(SlideItem, parentslide).transform;
+            itemDolls.Add(currentpage);
 
             for (int i = 0; i < dollAcquired.Count; i++)
             {
                 currentpage.GetChild(currentItem).GetComponent<Image>().sprite = dollAcquired[i].dolls.DollImage;
+                currentpage.GetChild(currentItem).gameObject.SetActive(true);
 
                 if (i + 1 >= dollAcquired.Count) break;
                 currentItem++;
@@ -73,6 +80,7 @@ public class HomePage : MonoBehaviour
                 {
                     currentItem = 0;
                     currentpage = Instantiate(SlideItem, parentslide).transform;
+                    itemDolls.Add(currentpage);
                 }
             }
         }
@@ -85,6 +93,7 @@ public class HomePage : MonoBehaviour
             for (int i = 0; i < SaveData.Instance.save.inventory.ingredientsHave.Count; i++)
             {
                 currentpage.GetChild(currentItem).GetComponent<Image>().sprite = dollAcquired[i].dolls.DollImage;
+                currentpage.GetChild(currentItem).gameObject.SetActive(true);
 
                 if (i + 1 >= dollAcquired.Count) break;
                 currentItem++;
@@ -102,12 +111,24 @@ public class HomePage : MonoBehaviour
                         currentItem = 0;                        
                         pageMaxNumber++;
                         currentpage = Instantiate(SlideItem, parentslide).transform;
+                        itemDolls.Add(currentpage);
                     }
                 }
             }
         }
     }
 
+
+    public void disableall()
+    {
+        foreach (var datas in itemDolls)
+        {
+            foreach (Transform data in datas)
+            {
+                data.gameObject.SetActive(false);
+            }
+        }
+    }
 
 /*    public void UpdateItem()
     {

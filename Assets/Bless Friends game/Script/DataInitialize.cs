@@ -35,7 +35,7 @@ public class DataInitialize : MonoBehaviour
     {
         recipe.RecipeList.Clear();
         // Splitting the dataset in the end of line
-        set = texts.text.Split(new char[] { '\n' }).ToList() ;
+        set = texts.text.Trim().Split('\n').ToList() ;
         int x = 0;
         foreach (var item in set)
         { 
@@ -43,7 +43,7 @@ public class DataInitialize : MonoBehaviour
             List<string> kata = new();
             for (int i = 1; i < resep.Length; i++)
             {
-                kata.Add(resep[i]);
+                kata.Add(resep[i].Trim());
             }
             recipe.RecipeList.Add(new Recipe(x.ToString(), false, resep[0],kata.ToArray()));
             x++;

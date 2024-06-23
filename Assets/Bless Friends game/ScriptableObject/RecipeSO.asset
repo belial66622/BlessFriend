@@ -17,94 +17,94 @@ MonoBehaviour:
     IsUnlocked: 0
     DollNameRecipe: ice-cream
     DollIngredients:
-    - "ice-cream-cone\r"
+    - ice-cream-cone
   - RecipeId: 1
     IsUnlocked: 0
     DollNameRecipe: rainbow
     DollIngredients:
-    - "rainbow-cloud\r"
+    - rainbow-cloud
   - RecipeId: 2
     IsUnlocked: 0
     DollNameRecipe: ray
     DollIngredients:
     - cookies
-    - "sun\r"
+    - sun
   - RecipeId: 3
     IsUnlocked: 0
     DollNameRecipe: beat
     DollIngredients:
     - koi
-    - "shield\r"
+    - shield
   - RecipeId: 4
     IsUnlocked: 0
     DollNameRecipe: violet
     DollIngredients:
     - koi
-    - "flower\r"
+    - flower
   - RecipeId: 5
     IsUnlocked: 0
     DollNameRecipe: toasty
     DollIngredients:
     - koi
-    - "bread\r"
+    - bread
   - RecipeId: 6
     IsUnlocked: 0
     DollNameRecipe: melonpan
     DollIngredients:
     - koi
-    - "crown\r"
+    - crown
   - RecipeId: 7
     IsUnlocked: 0
     DollNameRecipe: icy
     DollIngredients:
     - koi
-    - "gem\r"
+    - gem
   - RecipeId: 8
     IsUnlocked: 0
     DollNameRecipe: sweetie
     DollIngredients:
     - koi
-    - "ice-cream-cone\r"
+    - ice-cream-cone
   - RecipeId: 9
     IsUnlocked: 0
     DollNameRecipe: tangyuan-white
     DollIngredients:
     - onde2
-    - "onde2\r"
+    - onde2
   - RecipeId: 10
     IsUnlocked: 0
     DollNameRecipe: tangyuan-green
     DollIngredients:
     - onde2
     - leaf
-    - "turtle\r"
+    - turtle
   - RecipeId: 11
     IsUnlocked: 0
     DollNameRecipe: tangyuan-pink
     DollIngredients:
     - onde2
     - heart-shape
-    - "arrow\r"
+    - arrow
   - RecipeId: 12
     IsUnlocked: 0
     DollNameRecipe: honeyon
     DollIngredients:
     - bread
     - fairy
-    - "macaroon\r"
+    - macaroon
   - RecipeId: 13
     IsUnlocked: 0
     DollNameRecipe: sparkle
     DollIngredients:
     - bread
     - light
-    - "meteor\r"
+    - meteor
   - RecipeId: 14
     IsUnlocked: 0
     DollNameRecipe: citrus
     DollIngredients:
     - bread
-    - "orange-peel\r"
+    - orange-peel
   - RecipeId: 15
     IsUnlocked: 0
     DollNameRecipe: yuanbao
@@ -112,303 +112,299 @@ MonoBehaviour:
     - bread
     - japan-gold
     - yuanbao
-    - "coin\r"
+    - coin
   - RecipeId: 16
     IsUnlocked: 0
     DollNameRecipe: waffle
     DollIngredients:
     - bread
-    - "waffles\r"
+    - waffles
   - RecipeId: 17
     IsUnlocked: 0
     DollNameRecipe: dango
     DollIngredients:
     - bread
-    - "dango-stick\r"
+    - dango-stick
   - RecipeId: 18
     IsUnlocked: 0
     DollNameRecipe: donut
     DollIngredients:
-    - "donuts\r"
+    - donuts
   - RecipeId: 19
     IsUnlocked: 0
     DollNameRecipe: cotton
     DollIngredients:
     - bread
     - bushes
-    - "fluff\r"
+    - fluff
   - RecipeId: 20
     IsUnlocked: 0
     DollNameRecipe: starwish
     DollIngredients:
     - bread
     - star
-    - "letter\r"
+    - letter
   - RecipeId: 21
     IsUnlocked: 0
     DollNameRecipe: lantern
     DollIngredients:
     - bread
-    - "lantern-stick\r"
+    - lantern-stick
   - RecipeId: 22
     IsUnlocked: 0
     DollNameRecipe: snowink
     DollIngredients:
     - bread
     - snow
-    - "brush\r"
+    - brush
   - RecipeId: 23
     IsUnlocked: 0
     DollNameRecipe: milky
     DollIngredients:
     - star
-    - "flower\r"
+    - flower
   - RecipeId: 24
     IsUnlocked: 0
     DollNameRecipe: happy
     DollIngredients:
     - bread
     - bone
-    - "cake\r"
+    - cake
   - RecipeId: 25
     IsUnlocked: 0
     DollNameRecipe: junior
     DollIngredients:
     - bread
     - bone
-    - "onde2\r"
+    - onde2
   - RecipeId: 26
     IsUnlocked: 0
     DollNameRecipe: cubby
     DollIngredients:
     - bread
-    - "bone\r"
+    - bone
   - RecipeId: 27
     IsUnlocked: 0
-    DollNameRecipe: starcup
+    DollNameRecipe: starcub
     DollIngredients:
     - bread
-    - "cup\r"
+    - cup
   - RecipeId: 28
     IsUnlocked: 0
     DollNameRecipe: ribbon
     DollIngredients:
     - bread
-    - "ribbon\r"
+    - ribbon
   - RecipeId: 29
     IsUnlocked: 0
     DollNameRecipe: ballony
     DollIngredients:
     - bread
-    - "ballon\r"
+    - ballon
   - RecipeId: 30
     IsUnlocked: 0
     DollNameRecipe: sailor
     DollIngredients:
     - bread
-    - "onde2\r"
+    - onde2
   - RecipeId: 31
     IsUnlocked: 0
     DollNameRecipe: doro
     DollIngredients:
     - bread
-    - "cactus\r"
+    - cactus
   - RecipeId: 32
     IsUnlocked: 0
     DollNameRecipe: biscuits
     DollIngredients:
     - bread
-    - "cookies\r"
+    - cookies
   - RecipeId: 33
     IsUnlocked: 0
     DollNameRecipe: dino
     DollIngredients:
     - bread
-    - "dino-tail\r"
+    - dino-tail
   - RecipeId: 34
     IsUnlocked: 0
     DollNameRecipe: lemonade
     DollIngredients:
     - bread
     - shield
-    - "star-lemon\r"
+    - star-lemon
   - RecipeId: 35
     IsUnlocked: 0
     DollNameRecipe: shou-tao
     DollIngredients:
     - peach
     - heart-shape
-    - "turtle\r"
+    - turtle
   - RecipeId: 36
     IsUnlocked: 0
     DollNameRecipe: mantou
     DollIngredients:
     - cake
-    - "strawberry\r"
+    - strawberry
   - RecipeId: 37
     IsUnlocked: 0
     DollNameRecipe: pancake
     DollIngredients:
     - cake
-    - "cookies\r"
+    - cookies
   - RecipeId: 38
     IsUnlocked: 0
     DollNameRecipe: mooncake
     DollIngredients:
     - cake
     - flower
-    - "moon\r"
+    - moon
   - RecipeId: 39
     IsUnlocked: 0
     DollNameRecipe: mogu
     DollIngredients:
     - mushroom
-    - "leaf\r"
+    - leaf
   - RecipeId: 40
     IsUnlocked: 0
     DollNameRecipe: beanie
     DollIngredients:
-    - "bell-flower\r"
+    - bell-flower
   - RecipeId: 41
     IsUnlocked: 0
     DollNameRecipe: ramen
     DollIngredients:
     - noodle
-    - "egg\r"
+    - egg
   - RecipeId: 42
     IsUnlocked: 0
     DollNameRecipe: pluie
     DollIngredients:
     - hat
-    - "straw\r"
+    - straw
   - RecipeId: 43
     IsUnlocked: 0
     DollNameRecipe: pudding
     DollIngredients:
-    - "cake\r"
+    - cake
   - RecipeId: 44
     IsUnlocked: 0
     DollNameRecipe: velvet
     DollIngredients:
     - fairy
     - cake
-    - "racoon-tail\r"
+    - racoon-tail
   - RecipeId: 45
     IsUnlocked: 0
     DollNameRecipe: rise-bunny
     DollIngredients:
     - shield
-    - "moon\r"
+    - moon
   - RecipeId: 46
     IsUnlocked: 0
     DollNameRecipe: gurumi
     DollIngredients:
     - wool
-    - "button\r"
+    - button
   - RecipeId: 47
     IsUnlocked: 0
     DollNameRecipe: inky
     DollIngredients:
     - pencil
-    - "flower\r"
+    - flower
   - RecipeId: 48
     IsUnlocked: 0
     DollNameRecipe: buku
     DollIngredients:
     - tiger
-    - "book\r"
+    - book
   - RecipeId: 49
     IsUnlocked: 0
     DollNameRecipe: choco
     DollIngredients:
     - mochi
-    - "chocolate\r"
+    - chocolate
   - RecipeId: 50
     IsUnlocked: 0
     DollNameRecipe: matcha
     DollIngredients:
     - mochi
     - leaf
-    - "flower\r"
+    - flower
   - RecipeId: 51
     IsUnlocked: 0
     DollNameRecipe: taro
     DollIngredients:
     - mochi
-    - "taro-leaf\r"
+    - taro-leaf
   - RecipeId: 52
     IsUnlocked: 0
     DollNameRecipe: chibichan-blossom
     DollIngredients:
     - puppet
     - key
-    - "flower\r"
+    - flower
   - RecipeId: 53
     IsUnlocked: 0
     DollNameRecipe: chibichan-panpan
     DollIngredients:
     - puppet
     - cake
-    - "onde2\r"
+    - onde2
   - RecipeId: 54
     IsUnlocked: 0
     DollNameRecipe: chibichan-rise
     DollIngredients:
     - puppet
     - shield
-    - "moon\r"
+    - moon
   - RecipeId: 55
     IsUnlocked: 0
     DollNameRecipe: chibichan-sango
     DollIngredients:
     - puppet
-    - "mountain\r"
+    - mountain
   - RecipeId: 56
     IsUnlocked: 0
     DollNameRecipe: chibichan-starwish
     DollIngredients:
     - puppet
     - star
-    - "magician\r"
+    - magician
   - RecipeId: 57
     IsUnlocked: 0
     DollNameRecipe: chibichan-armor
     DollIngredients:
     - puppet
     - clover
-    - "fox-tail\r"
+    - fox-tail
   - RecipeId: 58
     IsUnlocked: 0
     DollNameRecipe: konpeito
     DollIngredients:
     - puppet
     - start
-    - "orange-peel\r"
+    - orange-peel
   - RecipeId: 59
     IsUnlocked: 0
     DollNameRecipe: maple
     DollIngredients:
     - cherry
-    - "branch\r"
+    - branch
   - RecipeId: 60
     IsUnlocked: 0
     DollNameRecipe: kidong
     DollIngredients:
     - bell
-    - "heart-shape\r"
+    - heart-shape
   - RecipeId: 61
     IsUnlocked: 0
     DollNameRecipe: sparkle-qdoll
     DollIngredients:
     - shot
-    - "rabbit-tail\r"
+    - rabbit-tail
   - RecipeId: 62
     IsUnlocked: 0
     DollNameRecipe: snowink qdoll
     DollIngredients:
     - snow
-    - "brush\r"
-  - RecipeId: 63
-    IsUnlocked: 0
-    DollNameRecipe: 
-    DollIngredients: []
+    - brush

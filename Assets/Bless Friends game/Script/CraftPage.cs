@@ -23,7 +23,7 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private Vector3 originPos;
 
-
+    [Serialize]
     private List<string> ingredientsused = new();
 
     int pageNumber = 9;
@@ -37,9 +37,9 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
     [SerializeField]
     private List<Image> imagelist;
 
+    [SerializeField]
     List<Vector3> originalPosImage = new();
 
-    private GameObject lingkaran;
 
     [SerializeField]
     private Sprite[] animationListImage;
@@ -53,18 +53,25 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
     [SerializeField]
     private TextMeshProUGUI DollsName;
 
+    [SerializeField]
+    private GameObject skipone;
+    [SerializeField]
+    private GameObject skiptwo;
 
-    private void Start()
+    Vector3 slideposition;
+
+    public void Initialize()
     {
         UpdateItem();
-        SaveData.Instance.updateEvent += UpdateItem;
         originPos = parentslide.transform.localPosition;
 
+        slideposition = parentslide.transform.position;
         foreach (var item in imagelist)
         {
-            originalPosImage.Add(item.transform.localPosition);
+            originalPosImage.Add(item.transform.position);
         }
     }
+
 
     public void UpdateItem()
     {
@@ -173,8 +180,10 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
     }
 
     public void CheckCraft()
-    { 
-    
+    {
+        if (ingredientsused.Count == 0) return;
+        StartCoroutine(Craft(0, craftItems.Count));
+        skipone.SetActive(true);
     }
 
     public void ResetIngredient()
@@ -193,8 +202,9 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        var dif = (eventData.pressPosition.x - eventData.position.x) / (10);
-        parentslide.transform.position -= new Vector3(dif, 0, 0);
+        var dif = (eventData.pressPosition.x - eventData.position.x) ;
+
+        parentslide.transform.position = slideposition - new Vector3(dif, 0, 0);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -210,40 +220,43 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             parentslide.localPosition = originPos;
         }
+
+        slideposition = parentslide.transform.position;
     }
 
     IEnumerator Craft(int i, int jumlahitem)
     {
         float t = 0;
-        while (t > 0)
+        while (t < 1)
         {
             yield return null;
-            imagelist[i].transform.position = Vector2.Lerp(originalPosImage[i], lingkaran.transform.position, t);
+            imagelist[i].transform.position = Vector3.Lerp(originalPosImage[i], animationButton.transform.position, t);
             t += Time.deltaTime;
         }
-        imagelist[i].transform.position = Vector2.Lerp(originalPosImage[i], lingkaran.transform.position, 1);
+          imagelist[i].transform.position = Vector3.Lerp(originalPosImage[i], animationButton.transform.position, 1);
         imagelist[i].gameObject.SetActive(false);
 
-        if (i < jumlahitem-1)
+        if (i < jumlahitem-1 && i < 2)
         {
             StartCoroutine(Craft(i + 1 , jumlahitem));
         }
-        else if (i < 2)
-        { 
-            StartCoroutine(Craft(i + 1, jumlahitem)); 
-        }
         else
         {
-            StartCoroutine(Animation());
+            Skip();
         }
     }
 
     public void Skip()
     {
+        StopAllCoroutines();
         for (int i = 0; i < imagelist.Count; i++)
         {
             imagelist[i].gameObject.SetActive(false);
         }
+
+        skipone.SetActive(false);
+        skiptwo.SetActive(true);
+        StartCoroutine(Animation());
     }
 
     IEnumerator Animation()
@@ -251,19 +264,26 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
         Recipe recipe = null;
         foreach (var item in AssetManager.Instance.recipeList.RecipeList)
         {
-            if (craftItems.Count == item.DollIngredients.Length)
+
+            if (ingredientsused.Count == item.DollIngredients.Length)
             {
                 bool match = true;
-                foreach (var data in item.DollIngredients)
+                foreach (var data in ingredientsused)
                 {
-                    if (!craftItems.Any(x => x.Ingname == data))
+                    if (item.DollIngredients.Contains(data))
+                    {
+                        Debug.Log($"match {data}");
+                        continue;
+                    }
+                    else 
                     {
                         match = false;
                         break;
-                    }                    
+                    }
                 }
                 if (match)
                 {
+                    Debug.Log("match");
                     recipe = item;
                     break;
                 }
@@ -272,6 +292,8 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
 
         if (recipe is not null)
         {
+
+            SaveData.Instance.SetDolls(recipe.DollNameRecipe);
             Dolls.sprite = AssetManager.Instance.dollList.GetDoll(recipe.DollNameRecipe).DollImage;
             DollsName.SetText($"{recipe.DollNameRecipe}");
         }
@@ -279,8 +301,9 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             Dolls.sprite = Resources.Load<Sprite>("boneka/Fail-Doll");
             DollsName.SetText($"Fail");
-
         }
+
+            SaveData.Instance.SetIngredients(ingredientsused, -1);
 
         yield return new WaitForSeconds(.5f);
         animationButton.sprite = animationListImage[1];
@@ -297,9 +320,15 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void Reset()
     {
+        StopAllCoroutines();
         for (int i = 0; i < imagelist.Count; i++)
         {
             imagelist[i].transform.position = originalPosImage[i];
         }
+
+        animationButton.sprite = animationListImage[0];
+        skipone.SetActive(false);
+        skiptwo.SetActive(false);
+        Dolls.gameObject.SetActive(false);
     }
 }

@@ -18,7 +18,11 @@ public class SaveData : MonoBehaviour
 
     string SaveName = "SaveData.game";
 
-    public UnityAction updateEvent;
+    public HomePage homePage;
+
+    public CraftPage craftPage;
+
+    public ShopPage shopPage;
 
     private void Awake()
     {
@@ -45,7 +49,10 @@ public class SaveData : MonoBehaviour
         savedGamesPath = Application.persistentDataPath + "/";
 #endif        
         Loading();
-        Debug.Log(JsonUtility.ToJson(save));
+
+        craftPage.Initialize();
+        shopPage.Initialize();
+        homePage.Initialize();
     }
 
 
@@ -53,7 +60,9 @@ public class SaveData : MonoBehaviour
 
     public void updateData()
     {
-        updateEvent?.Invoke();
+        craftPage.UpdateItem();
+        shopPage.UpdateItem();
+        homePage.UpdateItem();
     }
 
     public void Saving()
@@ -74,13 +83,13 @@ public class SaveData : MonoBehaviour
                     writer.Write(data);
                 }
             }
-            Debug.Log(destination);
-            updateData();
+            Debug.Log(data);
         }
         catch (Exception e)
         {
-            Debug.LogError("error" + destination + "\n" + e);
+            Debug.LogError("error " + destination + "\n" + e);
         }
+        updateData();
     }
 
     public void Loading() 
@@ -159,6 +168,24 @@ public class SaveData : MonoBehaviour
         SaveData.Instance.SetMoney(amount * money);
     }
 
+    public void SetIngredients(List<string> name, int amount, int money = 0)
+    {
+        foreach (var item in SaveData.Instance.save.inventory.ingredientsHave)
+        {
+            foreach (var data in name)
+            {
+                if (item.IngredientName == data)
+                {
+                    item.AmountHold += amount;
+                }
+            }
+        }
+
+        SaveData.Instance.SetMoney(0);
+    }
+
+
+
     public DollHave GetDolls(string name)
     {
         foreach (var item in SaveData.Instance.save.inventory.dollHave)
@@ -189,6 +216,7 @@ public class SaveData : MonoBehaviour
             dollName = name,
             AmountHold = amount
         });
+
         Saving();
     }
 
