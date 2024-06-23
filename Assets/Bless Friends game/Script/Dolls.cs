@@ -8,14 +8,14 @@ public class Dolls : ScriptableObject
 {
     public List<Doll> doll;
 
-    public void InitializeFirstData()
+    public void InitializeFirstData(ScriptableObjectRecipe recipe)
     {
         doll.Clear();
         int i = 0;
         var data = Resources.LoadAll<Sprite>("boneka");
         foreach (var item in data)
         {
-            doll.Add(new Doll(i.ToString(), item.name,0,item));
+            doll.Add(new Doll(i.ToString(), item.name,recipe.RecipeList.Find(x => x.DollNameRecipe == item.name).DollIngredients.Length * 100,item));
             i++;
         }
     }

@@ -20,9 +20,6 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
     Image image;
 
     [SerializeField]
-    IngredientsList SoIngerdients;
-
-    [SerializeField]
     private GameObject SlideItem;
 
     private Transform currentpage;
@@ -47,6 +44,8 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
     {
         UpdateItem();
         originPos= parentslide.transform.localPosition;
+
+        SaveData.Instance.updateEvent += UpdateItem;
     }
 
     public void TakeIgredients(string name)
@@ -54,7 +53,7 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
         Popup.SetActive(true);
         moneyText.SetText($"Money ${SaveData.Instance.GetMoney()}");
         ownedText.SetText($"Owned ({SaveData.Instance.GetIngredients(name).AmountHold})");
-        image.sprite = SoIngerdients.GetImage(name);
+        image.sprite = AssetManager.Instance.ingredientsList.GetImage(name);
         nameHold = name;
     }
 
@@ -69,28 +68,72 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
 
     public void UpdateItem()
     {
-        currentpage = Instantiate(SlideItem, parentslide).transform;
+        pageMaxNumber = 0;
 
-        for (int i = 0; i < SoIngerdients.ingredients.Count; i++)
+        currentItem = 0;
+        if (parentslide.childCount == 0)
         {
-            var child = currentpage.GetChild(currentItem).GetComponent<Image>() ;
-            
-            var itemchild = child.gameObject.GetComponent<IngredientsItems>();
+            currentpage = Instantiate(SlideItem, parentslide).transform;
 
-            itemchild.GetimageEvent = TakeIgredients;
-            itemchild.ingredientName = SoIngerdients.ingredients[i].name;
-            child.sprite = SoIngerdients.ingredients[i].image;
-
-            child.gameObject.SetActive(true);
-
-            if (i + 1 == SoIngerdients.ingredients.Count) break;
-            currentItem++;
-            if (currentItem >= pageNumber)
+            for (int i = 0; i < AssetManager.Instance.ingredientsList.ingredients.Count; i++)
             {
-                currentItem = 0;
-                pageMaxNumber++;
-                currentpage = Instantiate(SlideItem, parentslide).transform;
+                var child = currentpage.GetChild(currentItem).GetComponent<Image>();
+
+                var itemchild = child.gameObject.GetComponent<IngredientsItems>();
+
+                itemchild.GetimageEvent = TakeIgredients;
+                itemchild.ingredientName = AssetManager.Instance.ingredientsList.ingredients[i].name;
+                child.sprite = AssetManager.Instance.ingredientsList.ingredients[i].image;
+
+                child.gameObject.SetActive(true);
+
+                if (i + 1 >= AssetManager.Instance.ingredientsList.ingredients.Count) break;
+                currentItem++;
+                if (currentItem >= pageNumber)
+                {
+                    currentItem = 0;
+                    pageMaxNumber++;
+                    currentpage = Instantiate(SlideItem, parentslide).transform;
+                }
             }
+        }
+
+        else
+        {  
+            //check number of child
+            currentpage = parentslide.GetChild(pageMaxNumber);
+
+            for (int i = 0; i < SaveData.Instance.save.inventory.ingredientsHave.Count; i++)
+            {
+                var child = currentpage.GetChild(currentItem).GetComponent<Image>();
+
+                var itemchild = child.gameObject.GetComponent<IngredientsItems>();
+
+                itemchild.GetimageEvent = TakeIgredients;
+                itemchild.ingredientName = AssetManager.Instance.ingredientsList.ingredients[i].name;
+                child.sprite = AssetManager.Instance.ingredientsList.ingredients[i].image;
+
+                child.gameObject.SetActive(true);
+
+                if (i + 1 >= AssetManager.Instance.ingredientsList.ingredients.Count) break;
+                currentItem++;
+                if (currentItem >= pageNumber)
+                {
+                    if (pageMaxNumber < parentslide.childCount)
+                    {
+                        currentItem = 0;
+                        pageMaxNumber++;
+                        currentpage = parentslide.GetChild(pageMaxNumber);
+                    }
+                    else
+                    {
+                        currentItem = 0;
+                        pageMaxNumber++;
+                        currentpage = Instantiate(SlideItem, parentslide).transform;
+                    }
+                }
+            }
+
         }
     }
 

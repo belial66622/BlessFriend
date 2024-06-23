@@ -11,9 +11,10 @@ public class DataInitialize : MonoBehaviour
     public List<string> set;
     public ScriptableObjectRecipe recipe;
 
+
     public void dollInit()
     { 
-        doll.InitializeFirstData();
+        doll.InitializeFirstData(recipe);
     }
 
 

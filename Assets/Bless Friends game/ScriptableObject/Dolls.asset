@@ -15,253 +15,253 @@ MonoBehaviour:
   doll:
   - DollId: 0
     DollName: ballony
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: a4daf455dbb36e141a2b00c3948af162, type: 3}
   - DollId: 1
     DollName: beanie
-    DollMoneyAmount: 0
+    DollMoneyAmount: 100
     DollImage: {fileID: 21300000, guid: 46ac43a32719edf4eb6f5f41e6b94c9d, type: 3}
   - DollId: 2
     DollName: beat
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: ebdde4e478811774e90b6a7e75a675f7, type: 3}
   - DollId: 3
     DollName: biscuits
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: d0f75120927d9594694b47288828cf0a, type: 3}
   - DollId: 4
     DollName: buku
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 39a3f68d8fb77c84083a453c8c20f18f, type: 3}
   - DollId: 5
     DollName: chibichan-armor
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 121fb7d5376e6284c9cdadc56ef9f7e9, type: 3}
   - DollId: 6
     DollName: chibichan-blossom
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 3f222641f91d40e429bb9591f42f3d12, type: 3}
   - DollId: 7
     DollName: chibichan-panpan
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: fb3a9919cf07a8845b6cb28687e643aa, type: 3}
   - DollId: 8
     DollName: chibichan-rise
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 5a031f5bf93d6894290d715f8f34abd8, type: 3}
   - DollId: 9
     DollName: chibichan-sango
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: f97ac13171d1e0046bf11d153f8a36c9, type: 3}
   - DollId: 10
     DollName: chibichan-starwish
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: d480751f2fbbfee419e8ea717f764504, type: 3}
   - DollId: 11
     DollName: choco
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 317a7d510c6761a4db9d6fc7195cfb59, type: 3}
   - DollId: 12
     DollName: citrus
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 28907f0a598adf640b8bffc1a2b11e27, type: 3}
   - DollId: 13
     DollName: cotton
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: d9876711f8dc3bb4480b9139eeb1a244, type: 3}
   - DollId: 14
     DollName: cubby
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 8f34eb868d083874ab824def50a25028, type: 3}
   - DollId: 15
     DollName: dango
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 50849875349195c44815dfd6440fb3ab, type: 3}
   - DollId: 16
     DollName: dino
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: fc864f946f44ea544b9cbe16593f80c4, type: 3}
   - DollId: 17
     DollName: donut
-    DollMoneyAmount: 0
+    DollMoneyAmount: 100
     DollImage: {fileID: 21300000, guid: 3e94dc6e82a4fab439272e21614a594b, type: 3}
   - DollId: 18
     DollName: doro
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: ef4a1272e5f218c42afc92df7e4b68b8, type: 3}
   - DollId: 19
     DollName: gurumi
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 2d3a982888c796342bf91c55d3fb26fd, type: 3}
   - DollId: 20
     DollName: happy
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 951078350c932834fa938e9d5662be6d, type: 3}
   - DollId: 21
     DollName: honeyon
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: bd5a894866a1baf4f9767a0c22768fde, type: 3}
   - DollId: 22
     DollName: ice-cream
-    DollMoneyAmount: 0
+    DollMoneyAmount: 100
     DollImage: {fileID: 21300000, guid: e192010d0841e644996f9c177fabfee7, type: 3}
   - DollId: 23
     DollName: icy
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: a52be79a1f7dccf459937b50570a679f, type: 3}
   - DollId: 24
     DollName: inky
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 927c1fec077f2f94bb097a9896bc9848, type: 3}
   - DollId: 25
     DollName: junior
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: d63903a31e088e84baffb7dbfb057cbd, type: 3}
   - DollId: 26
     DollName: kidong
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: e6d879323e4a4a44cad5962f660fd5e7, type: 3}
   - DollId: 27
     DollName: konpeito
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 0caf6e4543b361748be014266107d852, type: 3}
   - DollId: 28
     DollName: lantern
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: e191b4b05440dca45a5289d639eb9d9e, type: 3}
   - DollId: 29
     DollName: lemonade
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 43c773ce2bb6b79449588203164531b5, type: 3}
   - DollId: 30
     DollName: mantou
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 59805dc2a40a79b48b32094c8096f132, type: 3}
   - DollId: 31
     DollName: maple
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 6ba06e6e539d63a489b0d3f1b5575574, type: 3}
   - DollId: 32
     DollName: matcha
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 90a4a746b84c5284b80fd4f262ecef47, type: 3}
   - DollId: 33
     DollName: melonpan
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 9f33e4a905d283b4b9eb0622929bee2a, type: 3}
   - DollId: 34
     DollName: milky
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 70795428d020b574c87feb5d696dff9b, type: 3}
   - DollId: 35
     DollName: mogu
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: ac0382dfdee43064993024b4cd1ca0fe, type: 3}
   - DollId: 36
     DollName: mooncake
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 070b3afbab8c1ac41bb4e8a8f7f3a08b, type: 3}
   - DollId: 37
     DollName: pancake
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 4ff9a218747f54f448da6cf993eb20ce, type: 3}
   - DollId: 38
     DollName: pluie
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: fd03b456413f5a842a651a79c577ce01, type: 3}
   - DollId: 39
     DollName: pudding
-    DollMoneyAmount: 0
+    DollMoneyAmount: 100
     DollImage: {fileID: 21300000, guid: 54359a99fda647b4e840a68ad35bb061, type: 3}
   - DollId: 40
     DollName: rainbow
-    DollMoneyAmount: 0
+    DollMoneyAmount: 100
     DollImage: {fileID: 21300000, guid: f7221f5ae402eba478bede2550c6299e, type: 3}
   - DollId: 41
     DollName: ramen
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 3d1b4346a2e1169428357db2fe08e1dd, type: 3}
   - DollId: 42
     DollName: ray
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 8ef3892529481f9419fba5d0ec021d0d, type: 3}
   - DollId: 43
     DollName: ribbon
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 007abf4c2e68761438f83df1938e2ec0, type: 3}
   - DollId: 44
     DollName: rise-bunny
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 98ca3288d0e390740bbd8181d74c230b, type: 3}
   - DollId: 45
     DollName: sailor
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 6feb2c54a6cbfdb48b7a06d1c0c171d2, type: 3}
   - DollId: 46
     DollName: shou-tao
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: cecf57550d599904c9077c07138b28ad, type: 3}
   - DollId: 47
     DollName: snowink
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 9327b459bc91bd1499ceb9d12e8b68e1, type: 3}
   - DollId: 48
     DollName: snowink qdoll
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: e8c3c4d8ab1369e4c8725c9fa13a131a, type: 3}
   - DollId: 49
     DollName: sparkle
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: bc0b0b122b3c6594eab4aa28f3af3e57, type: 3}
   - DollId: 50
     DollName: sparkle-qdoll
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 9ad3e860fbc926149bd7aa5d740d39e6, type: 3}
   - DollId: 51
     DollName: starcup
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: c53af7c50cf53f748a01f3d6c5c1cdee, type: 3}
   - DollId: 52
     DollName: starwish
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: a6051e4c3387d05409254031d2c63382, type: 3}
   - DollId: 53
     DollName: sweetie
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 7a112f85b216f0c42973c1aa5b6043aa, type: 3}
   - DollId: 54
     DollName: tangyuan-green
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 1528ca74e0120ee4b8c05624d2e4d341, type: 3}
   - DollId: 55
     DollName: tangyuan-pink
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: b793c41bc91a86f4392554c8459c771a, type: 3}
   - DollId: 56
     DollName: tangyuan-white
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 01217415133a8ca468d86ea39d0a42f6, type: 3}
   - DollId: 57
     DollName: taro
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 7d1d5fc424aa0a54a9cc963b360b9af7, type: 3}
   - DollId: 58
     DollName: toasty
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 3758e68c48c22fa43be539e8c877335f, type: 3}
   - DollId: 59
     DollName: velvet
-    DollMoneyAmount: 0
+    DollMoneyAmount: 300
     DollImage: {fileID: 21300000, guid: 95a33ffd95d09f34eb5b0f4152a754ce, type: 3}
   - DollId: 60
     DollName: violet
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: e36f6aa1d873d794bab35bf35b2e27df, type: 3}
   - DollId: 61
     DollName: waffle
-    DollMoneyAmount: 0
+    DollMoneyAmount: 200
     DollImage: {fileID: 21300000, guid: 997598c9634eab74d8ef6ab7460e3d76, type: 3}
   - DollId: 62
     DollName: yuanbao
-    DollMoneyAmount: 0
+    DollMoneyAmount: 400
     DollImage: {fileID: 21300000, guid: 769dfe653969c38459f88079638e2cd5, type: 3}

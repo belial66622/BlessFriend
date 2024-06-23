@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using Environment = System.Environment;
 
@@ -16,7 +17,9 @@ public class SaveData : MonoBehaviour
     public Save save;
 
     string SaveName = "SaveData.game";
-   
+
+    public UnityAction updateEvent;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -48,6 +51,10 @@ public class SaveData : MonoBehaviour
 
     public static SaveData Instance { get; private set; }
 
+    public void updateData()
+    {
+        updateEvent?.Invoke();
+    }
 
     public void Saving()
     {
@@ -68,6 +75,7 @@ public class SaveData : MonoBehaviour
                 }
             }
             Debug.Log(destination);
+            updateData();
         }
         catch (Exception e)
         {

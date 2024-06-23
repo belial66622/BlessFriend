@@ -26,6 +26,14 @@ public class Recipe
         DollIngredients = dollIngredients;
     }
 
+    public Recipe()
+    {
+        RecipeId = "";
+        IsUnlocked = false;
+        DollNameRecipe = "";
+        DollIngredients = new string[0];
+    }
+
 
     public Recipe Clone()
     {

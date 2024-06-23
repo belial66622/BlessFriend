@@ -185,7 +185,7 @@ MonoBehaviour:
     - "bone\r"
   - RecipeId: 27
     IsUnlocked: 0
-    DollNameRecipe: starcub
+    DollNameRecipe: starcup
     DollIngredients:
     - bread
     - "cup\r"
