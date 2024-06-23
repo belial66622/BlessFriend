@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Environment = System.Environment;
-
 
 public class SaveData : MonoBehaviour
 {
@@ -42,6 +42,7 @@ public class SaveData : MonoBehaviour
         savedGamesPath = Application.persistentDataPath + "/";
 #endif        
         Loading();
+        Debug.Log(JsonUtility.ToJson(save));
     }
 
 
@@ -57,7 +58,7 @@ public class SaveData : MonoBehaviour
             Directory.CreateDirectory(Path.GetDirectoryName(destination));
 
 
-            var data = JsonUtility.ToJson(save,true);
+            var data = JsonConvert.SerializeObject(save);
 
             using (FileStream stream = new FileStream(destination, FileMode.Create))
             {
@@ -76,7 +77,7 @@ public class SaveData : MonoBehaviour
 
     public void Loading() 
     {
-        string destination = Path.Combine(Application.persistentDataPath, SaveName);
+        string destination = Path.Combine(savedGamesPath, SaveName);
         Save saveData = new();
         if (File.Exists(destination))
         {
@@ -91,7 +92,8 @@ public class SaveData : MonoBehaviour
                     }
                 }
 
-                save = JsonUtility.FromJson<Save>(dataToLoad);
+                save = JsonConvert.DeserializeObject<Save>(dataToLoad) ;
+                Debug.Log(dataToLoad);
             }
             catch (Exception e)
             {
@@ -101,6 +103,7 @@ public class SaveData : MonoBehaviour
         else
         {
             save = saveData;
+            Saving();
         }
     }
 
@@ -129,14 +132,14 @@ public class SaveData : MonoBehaviour
 
         return new IngredientsHave();
     }
-    public void SetIngredients(string name, int amount)
+    public void SetIngredients(string name, int amount , int money = 0)
     {
         foreach (var item in SaveData.Instance.save.inventory.ingredientsHave)
         {
             if (item.IngredientName == name)
             {
                 item.AmountHold += amount;
-                Saving();
+                SaveData.Instance.SetMoney(amount * -money);
                 return;
             }
         }
@@ -145,7 +148,7 @@ public class SaveData : MonoBehaviour
         IngredientName= name,
         AmountHold = amount
         });
-        Saving();
+        SaveData.Instance.SetMoney(amount * money);
     }
 
     public DollHave GetDolls(string name)
@@ -213,53 +216,63 @@ public class SaveData : MonoBehaviour
 
 }
 
-[Serializable]
+
 public class Save
 {
-    public Inventory inventory;
-    public Economy economy;
-    public TimeSave timeSave;
-    public bool FirstTime;
+
+    public Inventory inventory { get; set; } = new();
+
+    public Economy economy { get; set; } = new();
+
+    public TimeSave timeSave { get; set; } = new();
+
+    public bool FirstTime { get; set; }
 }
 
-[Serializable]
+
 public class Inventory 
 {
-    public List<RecipeHave> recipe;
-    public List<DollHave> dollHave;
-    public List<IngredientsHave> ingredientsHave;
+
+    public List<RecipeHave> recipe { get; set; } = new();
+
+    public List<DollHave> dollHave { get; set; } = new();
+
+    public List<IngredientsHave> ingredientsHave { get; set; } = new();
 }
 
-[Serializable]
+
 public class Economy
-{ 
-    public int Money;
+{
+
+    public int Money { get; set; }
 }
 
-[Serializable]
+
 public class DollHave
 {
-    public string dollName;
-    public int AmountHold;
+
+    public string dollName { get; set; }
+
+    public int AmountHold { get; set; }
 }
 
-[Serializable]
+
 public class IngredientsHave
 {
-    public string IngredientName;
-    public int AmountHold;
+    public string IngredientName { get; set; }
+    public int AmountHold { get; set; }
 }
 
-[Serializable]
+
 public class RecipeHave
 {
-    public string RecipeId;
+
+    public string RecipeId { get; set; }
 }
 
 
-[Serializable]
 public class TimeSave
 {
-    public DateTime timesave;
-    public float time;
+ public DateTime timesave { get; set; } = new();
+    public float time { get; set; }
 }

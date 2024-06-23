@@ -13,6 +13,219 @@ MonoBehaviour:
   m_Name: Ingredients
   m_EditorClassIdentifier: 
   ingredients:
-  - Id: 
-    image: {fileID: 0}
-    name: 
+  - Id: 0
+    image: {fileID: 21300000, guid: 87df4b125bdc62a40933a830c732cd40, type: 3}
+    name: arrow
+  - Id: 1
+    image: {fileID: 21300000, guid: ba783e1f118d41a4e9bcb9593a36efb0, type: 3}
+    name: ballon
+  - Id: 2
+    image: {fileID: 21300000, guid: b8e0bd883f4fd404ca2b6fff75a1559b, type: 3}
+    name: bell
+  - Id: 3
+    image: {fileID: 21300000, guid: 088fa09e5b36da948bb2647b42e51278, type: 3}
+    name: bell-flower
+  - Id: 4
+    image: {fileID: 21300000, guid: 2216dd46698705b4683ea6fa9e89dcbf, type: 3}
+    name: bone
+  - Id: 5
+    image: {fileID: 21300000, guid: 50fbabfca99704541ac728adbba43b9c, type: 3}
+    name: book
+  - Id: 6
+    image: {fileID: 21300000, guid: 17e15f7d0d1b0bc49bb27d7f1c2f216e, type: 3}
+    name: branch
+  - Id: 7
+    image: {fileID: 21300000, guid: f585e7f071dd3b841958368e65a0a2fd, type: 3}
+    name: bread
+  - Id: 8
+    image: {fileID: 21300000, guid: 02139b81ee591564e9ddd7dd2a296c34, type: 3}
+    name: brush
+  - Id: 9
+    image: {fileID: 21300000, guid: 877ba5100558d8a448ba39fd67c7f8a1, type: 3}
+    name: bushes
+  - Id: 10
+    image: {fileID: 21300000, guid: 1f84fe6c96933244fa6712a3ac94522e, type: 3}
+    name: button
+  - Id: 11
+    image: {fileID: 21300000, guid: 11f1d0fb65ce55b4b9d948e350cffc2c, type: 3}
+    name: cactus
+  - Id: 12
+    image: {fileID: 21300000, guid: ec0e9721158f777479740ccdddf607ce, type: 3}
+    name: cake
+  - Id: 13
+    image: {fileID: 21300000, guid: e6ce70d93a0918b458f9d83b176d3fef, type: 3}
+    name: candy
+  - Id: 14
+    image: {fileID: 21300000, guid: 1bc4feadf4ee69c4db0151c494c65e18, type: 3}
+    name: chef-hat
+  - Id: 15
+    image: {fileID: 21300000, guid: dfbf80dd70d157e42aa9ce31664b80c3, type: 3}
+    name: cherry
+  - Id: 16
+    image: {fileID: 21300000, guid: 39694fef84766994087b88d07e3f95ae, type: 3}
+    name: chocolate
+  - Id: 17
+    image: {fileID: 21300000, guid: c369ea3fd93e98349bc92a7a727d1a9c, type: 3}
+    name: clover
+  - Id: 18
+    image: {fileID: 21300000, guid: edc3284cffa6c924f87cfc614fbe6301, type: 3}
+    name: coin
+  - Id: 19
+    image: {fileID: 21300000, guid: 1b666ec25b80b1c41b51116da9aba7f8, type: 3}
+    name: cookies
+  - Id: 20
+    image: {fileID: 21300000, guid: 6a2a5c0c4d295ff4db6a6bf487f3dfc0, type: 3}
+    name: crown
+  - Id: 21
+    image: {fileID: 21300000, guid: 74052cc0adce28d47bcdc11c5424ba39, type: 3}
+    name: cup
+  - Id: 22
+    image: {fileID: 21300000, guid: d3b6d30c0188f554aacb21d74b4b83cf, type: 3}
+    name: dango-stick
+  - Id: 23
+    image: {fileID: 21300000, guid: 6f95b4a22940656498570535a22add89, type: 3}
+    name: dino-tail
+  - Id: 24
+    image: {fileID: 21300000, guid: b341ed695dcb2f5498c8b45127e51c59, type: 3}
+    name: donuts
+  - Id: 25
+    image: {fileID: 21300000, guid: eee43691205c9ae4b8fad70bdf1a65e6, type: 3}
+    name: egg
+  - Id: 26
+    image: {fileID: 21300000, guid: 6de2af0f067864244998c95de9819f62, type: 3}
+    name: fairy
+  - Id: 27
+    image: {fileID: 21300000, guid: 2812fbc79e4a27841ad6b9c0550bc2d5, type: 3}
+    name: flower
+  - Id: 28
+    image: {fileID: 21300000, guid: 6d7bc3a77ed4243428c53dc955b3a91a, type: 3}
+    name: fluff
+  - Id: 29
+    image: {fileID: 21300000, guid: 2aeca535a755ae24d99307ff7fca634b, type: 3}
+    name: fox-tail
+  - Id: 30
+    image: {fileID: 21300000, guid: 4ee4fabe391872c458464c2a13f926d0, type: 3}
+    name: gem
+  - Id: 31
+    image: {fileID: 21300000, guid: da32ba5e26df5154ba832db5402ea60d, type: 3}
+    name: hat
+  - Id: 32
+    image: {fileID: 21300000, guid: 3ab4899498a4a394396a9e5f9a9be8c7, type: 3}
+    name: heart-shape
+  - Id: 33
+    image: {fileID: 21300000, guid: d51f8f79967cc0f49bd18a390ae8ced3, type: 3}
+    name: ice-cream-cone
+  - Id: 34
+    image: {fileID: 21300000, guid: 1d2166ea17e42e241a3541631af9dd28, type: 3}
+    name: japan-gold
+  - Id: 35
+    image: {fileID: 21300000, guid: da8a4c5584ae130459105282fa9ab1ee, type: 3}
+    name: key
+  - Id: 36
+    image: {fileID: 21300000, guid: b5495c064ce3e9f4797aac19f4b2d2f4, type: 3}
+    name: koi
+  - Id: 37
+    image: {fileID: 21300000, guid: d812f2c0c4d13a24d8ffd32ddf3f9ecd, type: 3}
+    name: lantern-stick
+  - Id: 38
+    image: {fileID: 21300000, guid: bb82703e411186744b04bc9973c430cb, type: 3}
+    name: leaf
+  - Id: 39
+    image: {fileID: 21300000, guid: 658561793191d524dadaf12d2200bb9c, type: 3}
+    name: letter
+  - Id: 40
+    image: {fileID: 21300000, guid: deaa1cb3183d77b43a4769c333bf15f8, type: 3}
+    name: light
+  - Id: 41
+    image: {fileID: 21300000, guid: 491a080709800f941a2e2ca037fcf54b, type: 3}
+    name: macaroon
+  - Id: 42
+    image: {fileID: 21300000, guid: 97dabf37e17075241a7c61a2decfb907, type: 3}
+    name: magician
+  - Id: 43
+    image: {fileID: 21300000, guid: abb9739c57b8a9a49879393ca8c6d0ed, type: 3}
+    name: meteor
+  - Id: 44
+    image: {fileID: 21300000, guid: b96e2469933df3d4a98f4c89de143e8f, type: 3}
+    name: mochi
+  - Id: 45
+    image: {fileID: 21300000, guid: 8caec77ae7bee8b4dabc6cd6fd5ab3e6, type: 3}
+    name: moon
+  - Id: 46
+    image: {fileID: 21300000, guid: 6688f84973f8d9343b1e491926d67c0e, type: 3}
+    name: mountain
+  - Id: 47
+    image: {fileID: 21300000, guid: bcd8cf7cba68b73489ea8d5ba2e586e3, type: 3}
+    name: mushroom
+  - Id: 48
+    image: {fileID: 21300000, guid: 99054a81b8aa3cb438ee76c2eaf3f795, type: 3}
+    name: noodle
+  - Id: 49
+    image: {fileID: 21300000, guid: 81c46a037b8d8bd4886e5f3cf6d80f1c, type: 3}
+    name: onde2
+  - Id: 50
+    image: {fileID: 21300000, guid: 203615313f3f9f54aa56d999fb9b6d63, type: 3}
+    name: orange-peel
+  - Id: 51
+    image: {fileID: 21300000, guid: d872f3016ac92ed4f81161f192574954, type: 3}
+    name: peach
+  - Id: 52
+    image: {fileID: 21300000, guid: 7c77e870b71b648439cd23a622b7faef, type: 3}
+    name: pencil
+  - Id: 53
+    image: {fileID: 21300000, guid: c7faa4c82e4f1c04cb395db2b9783a8b, type: 3}
+    name: puppet
+  - Id: 54
+    image: {fileID: 21300000, guid: b8b44d9a7cebe6e4a88f7e0a3f6df0f2, type: 3}
+    name: rabbit-tail
+  - Id: 55
+    image: {fileID: 21300000, guid: de5f99c2f90e8674aa36628da3530b43, type: 3}
+    name: raccon-tail
+  - Id: 56
+    image: {fileID: 21300000, guid: 3d0f9296ffc000b4ba8f56d138e48615, type: 3}
+    name: rainbow-cloud
+  - Id: 57
+    image: {fileID: 21300000, guid: 583614240e00ce54f925c3b582354264, type: 3}
+    name: ribbons
+  - Id: 58
+    image: {fileID: 21300000, guid: 1bcae36de24622843a8d7ae7b1646684, type: 3}
+    name: shell
+  - Id: 59
+    image: {fileID: 21300000, guid: 117ce17721ced974280f04dda53aaa5e, type: 3}
+    name: shield
+  - Id: 60
+    image: {fileID: 21300000, guid: 24452638728eff041874eaeb7e95dbbf, type: 3}
+    name: snow
+  - Id: 61
+    image: {fileID: 21300000, guid: 1c5065b1865787245b382582d6bcded3, type: 3}
+    name: star
+  - Id: 62
+    image: {fileID: 21300000, guid: fb95f1ea8e79cda48a117accccad02d1, type: 3}
+    name: star-lemon
+  - Id: 63
+    image: {fileID: 21300000, guid: bfd7e8f97ccaf3e4893941c914c24d21, type: 3}
+    name: straw
+  - Id: 64
+    image: {fileID: 21300000, guid: e777bb65d7237a046a2552b03388f42d, type: 3}
+    name: strawberry
+  - Id: 65
+    image: {fileID: 21300000, guid: 5c87dba89affb644685f4fedbd683999, type: 3}
+    name: sun
+  - Id: 66
+    image: {fileID: 21300000, guid: ac7aef7f512cb3e45aa103517f0abe58, type: 3}
+    name: taro-leaf
+  - Id: 67
+    image: {fileID: 21300000, guid: 582c7e5ae121ba94f9d44f7a1dddbd83, type: 3}
+    name: tiger
+  - Id: 68
+    image: {fileID: 21300000, guid: 32ecf817ee14d4541a416de6c2b517ce, type: 3}
+    name: turtle
+  - Id: 69
+    image: {fileID: 21300000, guid: 4f8664d37a8ccbb49a377d17fd2b744b, type: 3}
+    name: waffles
+  - Id: 70
+    image: {fileID: 21300000, guid: 032e280499d5dfe41a4207bf9290c741, type: 3}
+    name: wool
+  - Id: 71
+    image: {fileID: 21300000, guid: 0d6fbabeff23e244f8d36dbf898f28e4, type: 3}
+    name: yuanbao

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShopPage : MonoBehaviour
+public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
 {
+
     [SerializeField]
     TextMeshProUGUI moneyText;
 
@@ -26,20 +30,41 @@ public class ShopPage : MonoBehaviour
     [SerializeField]
     private Transform parentslide;
 
+    [SerializeField]
+    private GameObject Popup;
+
+    private Vector3 originPos;
+
+    string nameHold;
+
     int pageNumber = 9;
 
     int currentItem = 0;
 
+    int pageMaxNumber= 0;
+
     private void Start()
     {
         UpdateItem();
+        originPos= parentslide.transform.localPosition;
     }
 
     public void TakeIgredients(string name)
     {
-        moneyText.SetText($"Money ${SaveData.Instance.save.economy.Money}");
+        Popup.SetActive(true);
+        moneyText.SetText($"Money ${SaveData.Instance.GetMoney()}");
         ownedText.SetText($"Owned ({SaveData.Instance.GetIngredients(name).AmountHold})");
         image.sprite = SoIngerdients.GetImage(name);
+        nameHold = name;
+    }
+
+    public void BuyIngredients(int value = 1)
+    {
+        if (value * 10 <= SaveData.Instance.GetMoney())
+        {
+            SaveData.Instance.SetIngredients(nameHold, value,10);
+            TakeIgredients(nameHold);
+        }
     }
 
     public void UpdateItem()
@@ -49,17 +74,44 @@ public class ShopPage : MonoBehaviour
         for (int i = 0; i < SoIngerdients.ingredients.Count; i++)
         {
             var child = currentpage.GetChild(currentItem).GetComponent<Image>() ;
-
-            child.sprite = SoIngerdients.ingredients[i].image;
             
+            var itemchild = child.gameObject.GetComponent<IngredientsItems>();
+
+            itemchild.GetimageEvent = TakeIgredients;
+            itemchild.ingredientName = SoIngerdients.ingredients[i].name;
+            child.sprite = SoIngerdients.ingredients[i].image;
+
             child.gameObject.SetActive(true);
 
+            if (i + 1 == SoIngerdients.ingredients.Count) break;
             currentItem++;
             if (currentItem >= pageNumber)
             {
                 currentItem = 0;
+                pageMaxNumber++;
                 currentpage = Instantiate(SlideItem, parentslide).transform;
             }
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        var dif = (eventData.pressPosition.x - eventData.position.x) / (10);
+        parentslide.transform.position -= new Vector3( dif, 0, 0 );
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        var distance = currentpage.GetComponent<RectTransform>().sizeDelta.x;
+        Debug.Log(originPos.x - (distance * pageMaxNumber));
+
+        if (parentslide.localPosition.x < (originPos.x - (distance*pageMaxNumber)))
+        {
+            parentslide.localPosition = new Vector3 (originPos.x - distance*pageMaxNumber, originPos.y, originPos.z );
+        }
+        else if (parentslide.localPosition.x > 0)
+        {
+            parentslide.localPosition = originPos;
         }
     }
 }

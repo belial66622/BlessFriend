@@ -273,7 +273,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 176554139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 543921413}
+        m_TargetAssemblyTypeName: ShopPage, Assembly-CSharp
+        m_MethodName: BuyIngredients
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &176554139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +406,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199015231}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 543921413}
+        m_TargetAssemblyTypeName: ShopPage, Assembly-CSharp
+        m_MethodName: BuyIngredients
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &199015231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &395368462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -681,7 +705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &543921410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -760,6 +784,7 @@ MonoBehaviour:
   SoIngerdients: {fileID: 11400000, guid: a88af35933683974e87a4d92a44e2607, type: 2}
   SlideItem: {fileID: 7736100521121762077, guid: d4de39ffdb531be4581d0ec236aa6601, type: 3}
   parentslide: {fileID: 445515180}
+  Popup: {fileID: 1754102701}
 --- !u!1 &556781324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,16 +2006,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c12bafd708db64d90bb686210f8d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  save:
-    inventory:
-      recipe: []
-      dollHave: []
-      ingredientsHave: []
-    economy:
-      Money: 0
-    timeSave:
-      time: 0
-    FirstTime: 0
 --- !u!114 &1484991469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2284,7 +2299,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: yakin untuk membeli bahan ini?
+  m_text: 'yakin untuk membeli bahan ini?
+
+    10 $ per Item'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2697,7 +2714,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 75
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
