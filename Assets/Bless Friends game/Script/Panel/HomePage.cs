@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,9 @@ public class HomePage : MonoBehaviour
 
     Vector3 slideposition;
 
+    [SerializeField]
+    TextMeshProUGUI timeCount;
+
     // Start is called before the first frame update
 
     public void Initialize()
@@ -53,6 +57,21 @@ public class HomePage : MonoBehaviour
             }
             );
         }
+    }
+
+    public void setTime(int hour , int minute)
+    {
+        if (hour > 0)
+            timeCount.SetText($"{hour} hours:{ minute:00} minutes ");
+        else
+        { 
+            
+        }
+    }
+
+    public void AddMoney()
+    { 
+        
     }
 
     public void UpdateItem()
@@ -107,7 +126,7 @@ public class HomePage : MonoBehaviour
                         currentpage = parentslide.GetChild(pageMaxNumber);
                     }
                     else
-                    {
+                    { 
                         currentpage = Instantiate(SlideItem, parentslide).transform;
                         itemDolls.Add(currentpage);
                     }

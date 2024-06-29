@@ -69,17 +69,27 @@ public class SaveData : MonoBehaviour
 
     IEnumerator TimeCount()
     {
-        while (IsGameOn)
+        float t = Mathf.FloorToInt(time) % 60;
+        while (IsGameOn && time > 0)
         {
             yield return null;
-            time -= Time.deltaTime;
+            time -= Time.unscaledDeltaTime;
+            t+= Time.unscaledDeltaTime;
+            if (t > 60)
+            {
+                homePage.setTime(Mathf.FloorToInt(time / (3600)), (int)(MathF.Abs(((time / 60) % 60))));
+                t = 0;
+            }
         }
 
+        homePage.AddMoney();
+        resetTime= t;
     }
 
     public void ResetTime()
     {
         time = resetTime;
+        StartCoroutine(TimeCount());
     }
 
     public static SaveData Instance { get; private set; }
@@ -162,13 +172,15 @@ public class SaveData : MonoBehaviour
                 {
                     time = save.timeSave.time;
                 }
-                if (save.FirstTime == false)
+                if (save.FirstTime != false)
                 {
                     IsGameOn = false;
                 }
                 else
                 { 
                     IsGameOn = true;
+                    homePage.setTime(Mathf.FloorToInt(time / (3600)), (int)(MathF.Abs(((time /60) %60))));
+                    StartCoroutine(TimeCount());
                 }
             }
             catch (Exception e)
