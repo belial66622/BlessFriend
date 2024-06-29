@@ -97,9 +97,11 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
                     continue;
                 }
 
+                var asset = AssetManager.Instance;
 
                 itemchild.OnClickEvent = AddIngredients;
                 itemchild.SetItem(item.IngredientName, item.AmountHold, AssetManager.Instance.ingredientsList.GetImage(item.IngredientName));
+
 
                 child.gameObject.SetActive(true);
 

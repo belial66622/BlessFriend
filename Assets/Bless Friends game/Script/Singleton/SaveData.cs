@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,6 +24,12 @@ public class SaveData : MonoBehaviour
     public CraftPage craftPage;
 
     public ShopPage shopPage;
+
+    public bool IsGameOn = false;
+
+    public float time = 0f;
+
+    private float resetTime = 86400f;
 
     private void Awake()
     {
@@ -50,11 +57,23 @@ public class SaveData : MonoBehaviour
 #endif        
         Loading();
 
-        craftPage.Initialize();
-        shopPage.Initialize();
-        homePage.Initialize();
+        updateData();
     }
 
+    IEnumerator TimeCount()
+    {
+        while (IsGameOn)
+        {
+            yield return null;
+            time -= Time.deltaTime;
+        }
+
+    }
+
+    public void ResetTime()
+    {
+        time = resetTime;
+    }
 
     public static SaveData Instance { get; private set; }
 
@@ -63,10 +82,16 @@ public class SaveData : MonoBehaviour
         craftPage.UpdateItem();
         shopPage.UpdateItem();
         homePage.UpdateItem();
+        StopAllCoroutines();
+        StartCoroutine(TimeCount());
     }
 
     public void Saving()
     {
+        if (!save.FirstTime)
+        {
+            save.timeSave.time = time;
+        }
         string destination = Path.Combine(savedGamesPath, SaveName);
 
         try
@@ -92,6 +117,15 @@ public class SaveData : MonoBehaviour
         updateData();
     }
 
+    private void OnApplicationQuit()
+    {
+        if (save.timeSave.timesave < System.DateTime.Now)
+        {
+            save.timeSave.timesave = System.DateTime.Now;
+        }
+        Saving();
+    }
+
     public void Loading() 
     {
         string destination = Path.Combine(savedGamesPath, SaveName);
@@ -111,6 +145,23 @@ public class SaveData : MonoBehaviour
 
                 save = JsonConvert.DeserializeObject<Save>(dataToLoad) ;
                 Debug.Log(dataToLoad);
+                if (save.timeSave.timesave < System.DateTime.Now)
+                {
+                    var diff = System.DateTime.Now - save.timeSave.timesave;
+                    time = save.timeSave.time - (float)diff.TotalSeconds;
+                }
+                else
+                {
+                    time = save.timeSave.time;
+                }
+                if (save.FirstTime == false)
+                {
+                    IsGameOn = false;
+                }
+                else
+                { 
+                    IsGameOn = true;
+                }
             }
             catch (Exception e)
             {
@@ -122,6 +173,8 @@ public class SaveData : MonoBehaviour
             save = saveData;
             Saving();
         }
+
+        
     }
 
     public int GetMoney()
@@ -262,7 +315,7 @@ public class Save
 
     public TimeSave timeSave { get; set; } = new();
 
-    public bool FirstTime { get; set; }
+    public bool FirstTime { get; set; } = true;
 }
 
 
@@ -309,6 +362,6 @@ public class RecipeHave
 
 public class TimeSave
 {
- public DateTime timesave { get; set; } = new();
-    public float time { get; set; }
+    public DateTime timesave { get; set; } = System.DateTime.Now;
+    public float time { get; set; } = 86400f;
 }

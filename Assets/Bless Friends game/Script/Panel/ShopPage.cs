@@ -137,7 +137,6 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
             }
 
         }
-        Debug.Log(pageMaxNumber);
     }
 
     public void OnDrag(PointerEventData eventData)
