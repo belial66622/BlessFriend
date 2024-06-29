@@ -132,6 +132,7 @@ public class RecipePage : MonoBehaviour
 
             if (itemcount >= maxpage-1)
             {
+                if(prevpage.Count==0)
                 prevpage.Push(i);
                 break;
             }

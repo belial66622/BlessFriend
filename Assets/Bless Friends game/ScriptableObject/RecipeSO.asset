@@ -65,6 +65,7 @@ MonoBehaviour:
     DollIngredients:
     - koi
     - ice-cream-cone
+    - chef-hat
   - RecipeId: 9
     IsUnlocked: 0
     DollNameRecipe: tangyuan-white
