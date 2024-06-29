@@ -100,16 +100,14 @@ public class HomePage : MonoBehaviour
 
                 if (currentItem >= pageNumber)
                 {
+                    currentItem = 0;
+                    pageMaxNumber++;
                     if (pageMaxNumber < parentslide.childCount)
                     {
-                        currentItem = 0;
-                        pageMaxNumber++;
                         currentpage = parentslide.GetChild(pageMaxNumber);
                     }
                     else
                     {
-                        currentItem = 0;                        
-                        pageMaxNumber++;
                         currentpage = Instantiate(SlideItem, parentslide).transform;
                         itemDolls.Add(currentpage);
                     }

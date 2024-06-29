@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RecipePage : MonoBehaviour
 {
-    List<Recipe> ingredientslist;
+    List<Recipe> ingredientslist = new();
 
     private int currentPage = 0;
 
@@ -14,8 +14,8 @@ public class RecipePage : MonoBehaviour
 
     private int lastItemIndex = 0;
 
-    private Stack<int> nextpage;
-    private Stack<int> prevpage;
+    private Stack<int> nextpage =new();
+    private Stack<int> prevpage = new();
 
     [SerializeField]
     private RecipeView view;
@@ -48,6 +48,7 @@ public class RecipePage : MonoBehaviour
       
     private void ShowRecipe()
     {
+        view.Refresh();
         int itemcount = 0;
 
         for (int i = 0 ; i < ingredientslist.Count; i++)
@@ -58,7 +59,7 @@ public class RecipePage : MonoBehaviour
                 itemcount++;
             }
 
-            if(itemcount >= maxpage)
+            if(itemcount >= maxpage-1)
             {
                 prevpage.Push(i);
                 return; 
@@ -71,10 +72,17 @@ public class RecipePage : MonoBehaviour
     public void NextPage()
     {
         int itemcount = 0;
+        int itemnow = 0;
 
-        if (prevpage.Peek() + 1 == ingredientslist.Count) return;
+         if (prevpage.TryPeek(out var now))
+            {
+                if (now + 1 >= ingredientslist.Count) return;
+                itemnow = now+1;
+            }
 
-        for (int i = prevpage.Peek(); i < ingredientslist.Count; i++)
+
+        view.Refresh();
+        for (int i = itemnow; i < ingredientslist.Count; i++)
         {
             if (ingredientslist[i].IsUnlocked)
             {
@@ -82,14 +90,13 @@ public class RecipePage : MonoBehaviour
                 itemcount++;
             }
 
-            if (itemcount >= maxpage)
+            if (itemcount >= maxpage-1)
             {
                 prevpage.Push(i);
                 return;
             }
         }
 
-        prevpage.Push(ingredientslist.Count + 1);
     }
 
     public void PrevPage()
@@ -99,26 +106,33 @@ public class RecipePage : MonoBehaviour
 
         if (prevpage.TryPop(out var item))
         {
-            if (prevpage.TryPeek(out var now))
-            { 
-                itemnow= now;
-            }
+            Debug.Log(item);
         }
         else
         {
             return;
         }
 
+        view.Refresh();
+        if (prevpage.TryPeek(out var now))
+        {
+            Debug.Log(now);
+            itemnow = now;
+        }
+
+
         for (int i = itemnow; i < ingredientslist.Count; i++)
         {
             if (ingredientslist[i].IsUnlocked)
             {
+                Debug.Log($"jumlah item {itemcount} dam item ke - {i}");
                 view.recipelist[itemcount].UpdateItem(ingredientslist[i].DollNameRecipe, ingredientslist[i].DollIngredients);
                 itemcount++;
             }
 
-            if (itemcount >= maxpage)
+            if (itemcount >= maxpage-1)
             {
+                prevpage.Push(i);
                 break;
             }
         }

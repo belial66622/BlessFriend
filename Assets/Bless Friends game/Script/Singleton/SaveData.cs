@@ -59,8 +59,10 @@ public class SaveData : MonoBehaviour
 #endif        
         Loading();
 
-        updateData();
-
+        craftPage.Initialize();
+        shopPage.Initialize();
+        homePage.Initialize();
+        
         recipePage.UpdateList();
 
     }
@@ -87,6 +89,7 @@ public class SaveData : MonoBehaviour
         craftPage.UpdateItem();
         shopPage.UpdateItem();
         homePage.UpdateItem();
+        recipePage.UpdateList();
         StopAllCoroutines();
         StartCoroutine(TimeCount());
     }

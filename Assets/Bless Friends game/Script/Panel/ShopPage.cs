@@ -62,7 +62,7 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
     {
         if (value * 10 <= SaveData.Instance.GetMoney())
         {
-            SaveData.Instance.SetIngredients(nameHold, value,10);
+            SaveData.Instance.SetIngredients(nameHold, value, value * -10);
             TakeIgredients(nameHold);
         }
     }

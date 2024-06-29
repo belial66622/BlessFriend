@@ -12,7 +12,7 @@ public class RecipeItem : MonoBehaviour
     Transform ingredientsParent;
 
 
-    private void RefreshItem()
+    public void RefreshItem()
     { 
         doll.gameObject.SetActive(false);
 
@@ -26,7 +26,6 @@ public class RecipeItem : MonoBehaviour
     public void UpdateItem(string doll, string []ingrerients ) 
     {
         int i = 0;
-        RefreshItem();
 
         this.doll.sprite = AssetManager.Instance.dollList.GetDoll(doll).DollImage;
         this.doll.gameObject.SetActive(true);

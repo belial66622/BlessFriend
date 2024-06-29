@@ -129,6 +129,7 @@ MonoBehaviour:
     IsUnlocked: 0
     DollNameRecipe: donut
     DollIngredients:
+    - bread
     - donuts
   - RecipeId: 19
     IsUnlocked: 0
