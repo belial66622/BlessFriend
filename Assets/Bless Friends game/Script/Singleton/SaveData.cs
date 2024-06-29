@@ -25,6 +25,8 @@ public class SaveData : MonoBehaviour
 
     public ShopPage shopPage;
 
+    public RecipePage recipePage;
+
     public bool IsGameOn = false;
 
     public float time = 0f;
@@ -58,6 +60,9 @@ public class SaveData : MonoBehaviour
         Loading();
 
         updateData();
+
+        recipePage.UpdateList();
+
     }
 
     IEnumerator TimeCount()
