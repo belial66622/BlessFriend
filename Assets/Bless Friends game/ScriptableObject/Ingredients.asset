@@ -229,3 +229,6 @@ MonoBehaviour:
   - Id: 71
     image: {fileID: 21300000, guid: 0d6fbabeff23e244f8d36dbf898f28e4, type: 3}
     name: yuanbao
+  - Id: 71
+    image: {fileID: 21300000, guid: bcdb26013a8402341b4d709a69a53f58, type: 3}
+    name: sailor-hat
