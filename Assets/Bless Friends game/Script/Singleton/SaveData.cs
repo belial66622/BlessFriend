@@ -66,6 +66,8 @@ public class SaveData : MonoBehaviour
         
         recipePage.UpdateList();
 
+        homePage.setTime(Mathf.FloorToInt(time / (3600)), (int)(MathF.Abs(((time / 60) % 60))));
+
     }
 
     public void Start()
@@ -76,8 +78,9 @@ public class SaveData : MonoBehaviour
     IEnumerator TimeCount()
     {
         if (!IsGameOn) yield break; 
-        float t = Mathf.FloorToInt(time) % 60;
-        while (IsGameOn && time > 0)
+        float t = 0;
+        time = save.timeSave.time;
+        while (time > 0)
         {
             yield return null;
             time -= Time.unscaledDeltaTime;
@@ -89,13 +92,16 @@ public class SaveData : MonoBehaviour
             }
         }
 
-        homePage.AddMoney();
-        resetTime= t;
+        ResetTime();
     }
 
     public void ResetTime()
     {
-        time = resetTime;
+        StopAllCoroutines();
+        save.timeSave.time = resetTime;
+        time = save.timeSave.time;
+        homePage.AddMoney();
+        homePage.setTime(Mathf.FloorToInt(time / (3600)), (int)(MathF.Abs(((time / 60) % 60))));
         StartCoroutine(TimeCount());
     }
 
@@ -109,6 +115,12 @@ public class SaveData : MonoBehaviour
         recipePage.UpdateList();
         StopAllCoroutines();
         StartCoroutine(TimeCount());
+    }
+
+    public void DisableFirst()
+    { 
+        homePage.disableFirst();
+        craftPage.DisableFirst();
     }
 
     public void Saving()
@@ -170,25 +182,18 @@ public class SaveData : MonoBehaviour
 
                 save = JsonConvert.DeserializeObject<Save>(dataToLoad) ;
                 Debug.Log(dataToLoad);
-                if (save.timeSave.timesave < System.DateTime.Now)
+
+                if (save.timeSave.timesave < System.DateTime.Now && !save.FirstTime)
                 {
                     var diff = System.DateTime.Now - save.timeSave.timesave;
                     time = save.timeSave.time - (float)diff.TotalSeconds;
                 }
                 else
                 {
+                    Debug.Log(save.timeSave.time);
                     time = save.timeSave.time;
                 }
-                if (save.FirstTime == true)
-                {
-                    IsGameOn = false;
-                }
-                else
-                { 
-                    IsGameOn = true;
-                    homePage.setTime(Mathf.FloorToInt(time / (3600)), (int)(MathF.Abs(((time /60) %60))));
-                    StartCoroutine(TimeCount());
-                }
+                TimeUpdate();
             }
             catch (Exception e)
             {
@@ -199,9 +204,28 @@ public class SaveData : MonoBehaviour
         {
             save = saveData;
             Saving();
+            
+                    time = save.timeSave.time;
         }
 
         
+    }
+
+
+    public void TimeUpdate()
+    {
+
+        if (save.FirstTime == true)
+        {
+            IsGameOn = false;
+        }
+        else
+        {
+            IsGameOn = true;
+
+            homePage.setTime(Mathf.FloorToInt(time / (3600)), (int)(MathF.Abs(((time / 60) % 60))));
+            StartCoroutine(TimeCount());
+        }
     }
 
     public int GetMoney()
@@ -353,7 +377,7 @@ public class Inventory
 
     public List<DollHave> dollHave { get; set; } = new();
 
-    public List<IngredientsHave> ingredientsHave { get; set; } = new();
+    public List<IngredientsHave> ingredientsHave { get; set; } = new ();
 }
 
 

@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
@@ -65,8 +67,21 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     Vector3 slideposition;
 
+    [SerializeField]
+    GameObject firstTime;
+
+    [SerializeField]
+    GameObject firstTimeExplanation;
+
+    bool isFirstTime = false;
+
     public void Initialize()
     {
+        if (SaveData.Instance.save.FirstTime)
+        {
+            isFirstTime = true;
+            FirstTime();
+        }
         UpdateItem();
         originPos = parentslide.transform.localPosition;
 
@@ -75,8 +90,18 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             originalPosImage.Add(item.transform.position);
         }
+
+
     }
 
+    private void FirstTime()
+    {
+        firstTime.SetActive(true) ;
+        if (SaveData.Instance.save.inventory.ingredientsHave.Where(x => x.IngredientName == "onde2").Sum(x => x.AmountHold) < 2)
+        {
+            SaveData.Instance.SetIngredients("onde2", 2); 
+        }
+    }
 
     public void UpdateItem()
     {
@@ -138,8 +163,10 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
 
                 craftItems.Add(itemchild);
 
-                if (item.AmountHold == 0)
+                if (item.AmountHold <= 0)
                 {
+
+                    child.gameObject.SetActive(false);
                     continue;
                 }
 
@@ -192,8 +219,6 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
         if (ingredientsused.Count == 0) return;
 
         crafting();
-        StartCoroutine(Craft(0, ingredientsused.Count));
-        skipone.SetActive(true);
     }
 
 
@@ -236,14 +261,25 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
             Dolls.sprite = AssetManager.Instance.dollList.GetDoll(recipe.DollNameRecipe).DollImage;
             DollsName.SetText($"{recipe.DollNameRecipe}");
             SaveData.Instance.setRecipe(recipe.RecipeId);
+            SaveData.Instance.save.FirstTime = false;
         }
         else
         {
+            if (SaveData.Instance.save.FirstTime)
+            {
+                FirstTime();
+                return;
+            }
+
             Dolls.sprite = Resources.Load<Sprite>("boneka/Fail-Doll");
             DollsName.SetText($"Fail");
         }
 
         SaveData.Instance.SetIngredients(ingredientsused, -1);
+        StartCoroutine(Craft(0, ingredientsused.Count));
+
+        skipone.SetActive(true);
+
     }
 
     public void ResetIngredient()
@@ -365,5 +401,19 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
         skipthree.SetActive(false);
         Dolls.gameObject.SetActive(false);
         ResetIngredient();
+
+        if (isFirstTime)
+        {
+            SaveData.Instance.DisableFirst();
+            firstTimeExplanation.SetActive(true);
+            isFirstTime = false;
+            SaveData.Instance.updateData();
+        }
+    }
+
+    public void DisableFirst()
+    {
+        firstTime.SetActive(false);
+        firstTimeExplanation.SetActive(false);
     }
 }

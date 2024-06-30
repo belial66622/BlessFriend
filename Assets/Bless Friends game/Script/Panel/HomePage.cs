@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -39,13 +40,21 @@ public class HomePage : MonoBehaviour , IDragHandler , IEndDragHandler
     [SerializeField]
     TextMeshProUGUI timeCount;
 
+    [SerializeField]
+    GameObject firstTime; 
+
     // Start is called before the first frame update
+
 
     public void Initialize()
     {
         originPos = parentslide.transform.localPosition;
         slideposition= parentslide.transform.position;
         UpdateItem();
+        if (SaveData.Instance.save.FirstTime)
+        {
+            FirstTime();
+        }
     }
     public void GetDoll()
     {
@@ -62,13 +71,24 @@ public class HomePage : MonoBehaviour , IDragHandler , IEndDragHandler
         }
     }
 
+
+    public void FirstTime()
+    {
+        firstTime.SetActive(true);
+    }
+
+    public void disableFirst()
+    {
+        firstTime.SetActive(false);
+    }
+
     public void setTime(int hour , int minute)
     {
         if (hour > 0)
-            timeCount.SetText($"{hour} hours:{ minute:00} minutes ");
+            timeCount.SetText($"{hour} hours:{ minute:00} minutes for ${dollAcquired.Sum(x=> x.amount * x.dolls.DollMoneyAmount)}");
         else
         {
-            timeCount.SetText($"{minute:00} minutes ");
+            timeCount.SetText($"{minute:00} minutes for ${dollAcquired.Sum(x => x.amount * x.dolls.DollMoneyAmount)}");
         }
     }
 
@@ -235,6 +255,8 @@ public class HomePage : MonoBehaviour , IDragHandler , IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (currentpage is null)
+        { return; }
         var distance = currentpage.GetComponent<RectTransform>().sizeDelta.x;
         Debug.Log(originPos.x - (distance * pageMaxNumber));
 

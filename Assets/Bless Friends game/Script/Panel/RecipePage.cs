@@ -8,11 +8,8 @@ public class RecipePage : MonoBehaviour
 {
     List<Recipe> ingredientslist = new();
 
-    private int currentPage = 0;
-
     private int maxpage = 9;
 
-    private int lastItemIndex = 0;
 
     private Stack<int> nextpage =new();
     private Stack<int> prevpage = new();
@@ -31,23 +28,31 @@ public class RecipePage : MonoBehaviour
 
         foreach (var item in ingredientslist)
         {
-            if (item.IsUnlocked) continue;
-
-            item.IsUnlocked = SaveData.Instance.save.inventory.recipe.Any(x => x.RecipeId == item.RecipeId);
+            if (item.IsUnlocked)
+            {
+                continue;
+            }
+                item.IsUnlocked = SaveData.Instance.save.inventory.recipe.Any(x => x.RecipeId == item.RecipeId);
+            
         }
         ShowRecipe();
     }
 
     private void OnDisable()
     {
-        prevpage.Clear();
-        nextpage.Clear();
+        Clear();
         ShowRecipe();
     }
 
+    public void Clear()
+    {
+        prevpage.Clear();
+        nextpage.Clear();
+    }
       
     private void ShowRecipe()
     {
+        Clear();
         view.Refresh();
         int itemcount = 0;
 
@@ -55,6 +60,7 @@ public class RecipePage : MonoBehaviour
         {
             if (ingredientslist[i].IsUnlocked)
             {
+                Debug.Log("masuk");
                 view.recipelist[itemcount].UpdateItem(ingredientslist[i].DollNameRecipe, ingredientslist[i].DollIngredients);
                 itemcount++;
             }
@@ -102,11 +108,13 @@ public class RecipePage : MonoBehaviour
     public void PrevPage()
     {
         int itemcount = 0;
-        int itemnow = 0; 
+        int itemnow = 0;
+
 
         if (prevpage.TryPop(out var item))
         {
             Debug.Log(item);
+
         }
         else
         {
