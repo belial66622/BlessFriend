@@ -67,8 +67,8 @@ public class HomePage : MonoBehaviour , IDragHandler , IEndDragHandler
         if (hour > 0)
             timeCount.SetText($"{hour} hours:{ minute:00} minutes ");
         else
-        { 
-            
+        {
+            timeCount.SetText($"{minute:00} minutes ");
         }
     }
 

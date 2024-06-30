@@ -75,6 +75,7 @@ public class SaveData : MonoBehaviour
 
     IEnumerator TimeCount()
     {
+        if (!IsGameOn) yield break; 
         float t = Mathf.FloorToInt(time) % 60;
         while (IsGameOn && time > 0)
         {
@@ -178,7 +179,7 @@ public class SaveData : MonoBehaviour
                 {
                     time = save.timeSave.time;
                 }
-                if (save.FirstTime != false)
+                if (save.FirstTime == true)
                 {
                     IsGameOn = false;
                 }

@@ -43,7 +43,7 @@ namespace TankU.Audio
 
         private void UpdateMixerVolume(bool _isMute)
         {
-            _masterAudio.audioMixer.SetFloat("Volume", _isMute ? -80f : 0f);
+           // _masterAudio.audioMixer.SetFloat("Volume", _isMute ? -80f : 0f);
         }
 
         public bool LoadAudioSetting()
