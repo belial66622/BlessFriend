@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TankU.Audio;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -59,6 +60,8 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
     private GameObject skiptwo;
     [SerializeField]
     private GameObject skipthree;
+
+    bool get= false;
 
     Vector3 slideposition;
 
@@ -179,6 +182,8 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
             image.sprite = imagesprite;
             image.gameObject.SetActive(true);
         }
+
+        AudioManager.Instance.PlaySFX("ButtonSound");
     }
 
     public void CheckCraft()
@@ -218,6 +223,7 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
                 {
                     Debug.Log("match");
                     recipe = item;
+                    get = true;
                     break;
                 }
             }
@@ -280,6 +286,7 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     IEnumerator Craft(int i, int jumlahitem)
     {
+        AudioManager.Instance.PlaySFX("SuckSound");
         float t = 0;
         while (t < 1)
         {
@@ -315,18 +322,28 @@ public class CraftPage : MonoBehaviour, IDragHandler, IEndDragHandler
 
     IEnumerator Animation()
     {
-        yield return new WaitForSeconds(.5f);
+        AudioManager.Instance.PlaySFX("CraftSound");
+        yield return new WaitForSeconds(.6f);
         animationButton.sprite = animationListImage[1];
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.6f);
         animationButton.sprite = animationListImage[2];
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.6f);
         animationButton.sprite = animationListImage[3];
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.6f);
         animationButton.sprite = animationListImage[0];
         Show();
     }
     public void Show()
     {
+        if (get)
+        {
+            AudioManager.Instance.PlaySFX("SuccessSound");
+        }
+
+        else
+        {
+            AudioManager.Instance.PlaySFX("FailSound");
+        }
         StopAllCoroutines();
         Dolls.gameObject.SetActive(true);
 

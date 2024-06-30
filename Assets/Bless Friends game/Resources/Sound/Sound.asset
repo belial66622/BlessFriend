@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af38f0d31efc4a44eb831e2e1c98b03f, type: 3}
+  m_Name: Sound
+  m_EditorClassIdentifier: 
+  _mainMenuBGM: Sound
+  _sounds:
+  - _name: Music
+    _audioClip: {fileID: 8300000, guid: f863f9ab65f9b8044a6a7a5393116018, type: 3}
+    _isBGM: 1
+    _audioMixerGroup: {fileID: -2696975600462007976, guid: c1347a4bac55dcf438a3b7cb0c3f5e18, type: 2}
+  - _name: ButtonSound
+    _audioClip: {fileID: 8300000, guid: 510f470067ca19647adbf91bca5cd582, type: 3}
+    _isBGM: 0
+    _audioMixerGroup: {fileID: -2165716782896244981, guid: c1347a4bac55dcf438a3b7cb0c3f5e18, type: 2}
+  - _name: ButtonSoundExit
+    _audioClip: {fileID: 8300000, guid: 76416fd8178c4b64ea0b1625f29cd4a7, type: 3}
+    _isBGM: 0
+    _audioMixerGroup: {fileID: -2165716782896244981, guid: c1347a4bac55dcf438a3b7cb0c3f5e18, type: 2}
+  - _name: SuckSound
+    _audioClip: {fileID: 8300000, guid: fd875c94871057f45b88fe79584c504a, type: 3}
+    _isBGM: 0
+    _audioMixerGroup: {fileID: -2165716782896244981, guid: c1347a4bac55dcf438a3b7cb0c3f5e18, type: 2}
+  - _name: CraftSound
+    _audioClip: {fileID: 8300000, guid: c9fa3da7ecc00e04b9d19a15e1bdbd0e, type: 3}
+    _isBGM: 0
+    _audioMixerGroup: {fileID: -2165716782896244981, guid: c1347a4bac55dcf438a3b7cb0c3f5e18, type: 2}
+  - _name: SuccessSound
+    _audioClip: {fileID: 8300000, guid: 1ee14071186b42f429dd9318f529f7ff, type: 3}
+    _isBGM: 0
+    _audioMixerGroup: {fileID: -2165716782896244981, guid: c1347a4bac55dcf438a3b7cb0c3f5e18, type: 2}
+  - _name: FailSound
+    _audioClip: {fileID: 8300000, guid: 87a6fabd323d117418814dffefd0b775, type: 3}
+    _isBGM: 0
+    _audioMixerGroup: {fileID: -2165716782896244981, guid: c1347a4bac55dcf438a3b7cb0c3f5e18, type: 2}
+  - _name: Suck
+    _audioClip: {fileID: 8300000, guid: fd875c94871057f45b88fe79584c504a, type: 3}
+    _isBGM: 0
+    _audioMixerGroup: {fileID: -2165716782896244981, guid: c1347a4bac55dcf438a3b7cb0c3f5e18, type: 2}

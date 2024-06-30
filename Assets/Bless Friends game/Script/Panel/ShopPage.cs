@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TankU.Audio;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,6 +19,12 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
 
     [SerializeField]
     Image image;
+
+    [SerializeField]
+    TextMeshProUGUI totalDolls;
+
+    [SerializeField]
+    TextMeshProUGUI ownedDolls;
 
     [SerializeField]
     private GameObject SlideItem;
@@ -41,6 +49,8 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
 
     Vector3 slideposition;
 
+ 
+
     public void Initialize()
     {
         UpdateItem();
@@ -51,6 +61,7 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
 
     public void TakeIgredients(string name)
     {
+        AudioManager.Instance.PlaySFX("ButtonSound");
         Popup.SetActive(true);
         moneyText.SetText($"Money ${SaveData.Instance.GetMoney()}");
         ownedText.SetText($"Owned ({SaveData.Instance.GetIngredients(name).AmountHold})");
@@ -65,10 +76,13 @@ public class ShopPage : MonoBehaviour , IDragHandler , IEndDragHandler
             SaveData.Instance.SetIngredients(nameHold, value, value * -10);
             TakeIgredients(nameHold);
         }
+        AudioManager.Instance.PlaySFX("ButtonSound");
     }
 
     public void UpdateItem()
     {
+        ownedDolls.SetText($"{SaveData.Instance.save.inventory.dollHave.Count}");
+        totalDolls.SetText($"{SaveData.Instance.save.inventory.dollHave.Sum(x=> x.AmountHold)}");
         pageMaxNumber = 0;
 
         currentItem = 0;

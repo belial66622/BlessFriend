@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using TankU.Audio;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -65,6 +66,11 @@ public class SaveData : MonoBehaviour
         
         recipePage.UpdateList();
 
+    }
+
+    public void Start()
+    {
+        AudioManager.Instance.PlayBGM("Music");
     }
 
     IEnumerator TimeCount()

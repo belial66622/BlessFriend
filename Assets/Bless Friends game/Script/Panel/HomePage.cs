@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HomePage : MonoBehaviour
+public class HomePage : MonoBehaviour , IDragHandler , IEndDragHandler
 {
     List<doll> dollAcquired = new();
 
@@ -32,6 +33,8 @@ public class HomePage : MonoBehaviour
     List<Transform> itemDolls = new();
 
     Vector3 slideposition;
+
+    int money_acquired;
 
     [SerializeField]
     TextMeshProUGUI timeCount;
@@ -70,8 +73,13 @@ public class HomePage : MonoBehaviour
     }
 
     public void AddMoney()
-    { 
-        
+    {
+        foreach (var item in dollAcquired)
+        {
+            money_acquired += item.dolls.DollMoneyAmount * item.amount;
+        }
+
+        SaveData.Instance.SetMoney(money_acquired);
     }
 
     public void UpdateItem()
@@ -97,6 +105,7 @@ public class HomePage : MonoBehaviour
                 currentItem++;
                 if (currentItem >= pageNumber)
                 {
+                    pageMaxNumber++;
                     currentItem = 0;
                     currentpage = Instantiate(SlideItem, parentslide).transform;
                     itemDolls.Add(currentpage);
@@ -147,23 +156,23 @@ public class HomePage : MonoBehaviour
         }
     }
 
-/*    public void UpdateItem()
-    {
-        currentpage = Instantiate(SlideItem, parentslide).transform;
-
-        for (int i = 0; i < dollAcquired.Count; i++)
+    /*    public void UpdateItem()
         {
-            currentpage.GetChild(currentItem).GetComponent<Image>().sprite = dollAcquired[i].dolls.DollImage;
+            currentpage = Instantiate(SlideItem, parentslide).transform;
 
-            if (i + 1 >= dollAcquired.Count) break;
-            currentItem++;
-            if (currentItem >= pageNumber)
+            for (int i = 0; i < dollAcquired.Count; i++)
             {
-                currentItem = 0;
-                currentpage = Instantiate(SlideItem, parentslide).transform;
+                currentpage.GetChild(currentItem).GetComponent<Image>().sprite = dollAcquired[i].dolls.DollImage;
+
+                if (i + 1 >= dollAcquired.Count) break;
+                currentItem++;
+                if (currentItem >= pageNumber)
+                {
+                    currentItem = 0;
+                    currentpage = Instantiate(SlideItem, parentslide).transform;
+                }
             }
-        }
-    }*/
+        }*/
 
     /*public void UpdateItem(int page)
     {
@@ -217,6 +226,36 @@ public class HomePage : MonoBehaviour
             return;
         }
     }*/
+    public void OnDrag(PointerEventData eventData)
+    {
+        var dif = (eventData.pressPosition.x - eventData.position.x);
+
+        parentslide.transform.position = slideposition - new Vector3(dif, 0, 0);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        var distance = currentpage.GetComponent<RectTransform>().sizeDelta.x;
+        Debug.Log(originPos.x - (distance * pageMaxNumber));
+
+        Debug.Log(originPos.x);
+        Debug.Log(distance);
+        Debug.Log(pageMaxNumber);
+
+        Debug.Log(parentslide.localPosition);
+
+        if (parentslide.localPosition.x < (originPos.x - (distance * pageMaxNumber)))
+        {
+            parentslide.localPosition = new Vector3(originPos.x - distance * pageMaxNumber, originPos.y, originPos.z);
+        }
+        else if (parentslide.localPosition.x > 0)
+        {
+            parentslide.localPosition = originPos;
+        }
+
+        slideposition = parentslide.transform.position;
+    }
+
 }
 
 
